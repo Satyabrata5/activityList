@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+    <lightning:workspaceAPI aura:id="workspace" />
+    <c:activityLog recordId='{!v.recordId}' onuserClicked="{!c.handleUserDetails}" onobjectRecordClicked="{!c.handleRecordDetails}"/>
+</aura:component>
