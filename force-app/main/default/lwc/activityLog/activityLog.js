@@ -5,31 +5,29 @@ import { refreshApex } from '@salesforce/apex';
 export default class ActivityLog extends LightningElement {
   @api recordId;
   @track openmodel = false;
-  @track activitylogs = [];
+  @track activitylogs ;
   @track mydata;
   @wire(getActivityLogs, { caseId: '$recordId' })
-  activitylog({ data, error }) {
-    this.mydata = data;
-    if (data) {
-      for (let key in data) {
-        if (data.hasOwnProperty(key)) { // Filtering the data in the loop
-          this.activitylogs.push({ value: data[key], key: data[key].Object_Id__c });
+  activitylog(result) {
+    this.mydata = result;
+    if (result.data) {
+      this.activitylogs = [];
+      for (let key in result.data) {
+        if (result.data.hasOwnProperty(key)) { // Filtering the data in the loop
+          this.activitylogs.push({ value: result.data[key], key: result.data[key].Object_Id__c });
         }
       }
     }
-    else if (error) {
-      window.console.log(error);
+    else if (result.error) {
+      window.console.log(result.error);
     }
   }
   openmodal() {
-    this.openmodel = true
+    this.openmodel = true;
     return refreshApex(this.mydata);
   }
   closeModal() {
     this.openmodel = false
-  }
-  saveMethod() {
-    this.closeModal();
   }
   redirectToUser(event) {
     var userId;

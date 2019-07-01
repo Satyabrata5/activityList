@@ -1,5 +1,5 @@
 <template>
-    <lightning-button label="Show Modal" variant="brand" onclick={openmodal}></lightning-button>
+    <lightning-button label="Show Activity List" variant="brand" onclick={openmodal}></lightning-button>
     <template if:true={openmodel}>
         <div class="demo-only" style="height: 640px;">
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -26,9 +26,6 @@
                                                     <button class="slds-button slds-button_icon">
                                                         <svg class="slds-button__icon slds-timeline__details-action-icon"
                                                             aria-hidden="true">
-                                                            <use
-                                                                xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch">
-                                                            </use>
                                                         </svg>
                                                     </button>
                                                     <div class="slds-icon_container slds-icon-standard-task slds-timeline__icon"
