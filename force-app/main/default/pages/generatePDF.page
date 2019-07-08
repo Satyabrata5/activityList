@@ -1,0 +1,38 @@
+<apex:page showHeader="false" controller="TextVFPDFController" standardStylesheets="false" renderAs="PDF">
+    <!-- <apex:includeLightning />
+
+    <div id="lightning" />
+
+    <script>
+        $Lightning.use("c:generatePDFApp", function() {
+          $Lightning.createComponent("c:activityLog",{
+                "recordId" : "{!$CurrentPage.parameters.id}"
+          },
+              "lightning",
+              function(cmp) {
+                console.log("Component created");
+                // do some stuff
+              }
+          );
+        });
+    </script> -->
+    <apex:form >
+       <apex:pageBlock title="Activity Logs">
+           
+           <table border="1px">
+               <tr>
+                    <th>Activity</th>
+                    <th>Activity Description</th>
+                    <th>Created On</th>
+               </tr>                    
+               <apex:repeat value="{!ac}" var="a" >
+                   <tr>
+                    <td><apex:outputlink disabled="true" value="{!URLFOR('/lightning/r/' + a.Object_Name__c + '/' + a.Object_Id__c + '/view')}">{!a.Object_Name__c}</apex:outputlink></td>
+                    <td><apex:outputlink value="{!URLFOR('/lightning/r/' + a.Object_Name__c + '/' + a.Object_Id__c + '/view')}">{!a.Description__c}</apex:outputlink></td>
+                    <td><apex:inputField value="{!a.CreatedDate}"/></td>
+                   </tr>
+            </apex:repeat>
+        </table>
+       </apex:pageBlock>
+   </apex:form>
+</apex:page>

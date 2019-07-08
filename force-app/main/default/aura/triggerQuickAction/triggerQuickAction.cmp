@@ -1,4 +1,5 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
+<aura:component controller="ActivityLogApex" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader">
     <lightning:workspaceAPI aura:id="workspace" />
     <c:activityLog recordId='{!v.recordId}' onuserClicked="{!c.handleUserDetails}" onobjectRecordClicked="{!c.handleRecordDetails}"/>
+    <lightning:button variant="neutral" label="Generate Activity PDF" title="Generate Activity PDF" onclick="{! c.savePDF}"/>
 </aura:component>

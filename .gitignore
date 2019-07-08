@@ -21,6 +21,8 @@ node_modules/
 # MacOS system files
 .DS_Store
 
+**/__tests__/**
+
 # Windows system files
 Thumbs.db
 ehthumbs.db
